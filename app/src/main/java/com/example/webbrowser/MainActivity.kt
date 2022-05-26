@@ -1,19 +1,18 @@
 package com.example.webbrowser
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.*
+import androidx.core.content.ContextCompat
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val urlText = findViewById<EditText>(R.id.URL)
         val button = findViewById<Button>(R.id.button)
         val webView = findViewById<WebView>(R.id.webView)
+        val spinner = findViewById<Spinner>(R.id.spinner)
 
         button.setOnClickListener {
             if (isNetworkAvailable()) {
@@ -62,6 +62,25 @@ class MainActivity : AppCompatActivity() {
                 toast.show()
             }
         }
+        val typeStrings = resources.getStringArray(R.array.web_type)
+        val typeList = object: ArrayAdapter<String>(this, R.layout.spinner_item, typeStrings) {
+            override fun getDropDownView(
+                position: Int,
+                convertView: View?,
+                parent: ViewGroup
+            ): View {
+                val view = super.getDropDownView(position, convertView, parent)
+                if (position % 2 == 0) {
+                    view.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_50))
+                } else {
+                    view.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                }
+                return view
+            }
+        }
+
+        typeList.setDropDownViewResource(R.layout.dropdown_item)
+        spinner.adapter = typeList
 
     }
 

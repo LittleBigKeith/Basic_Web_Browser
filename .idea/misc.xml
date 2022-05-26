@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/keith/AndroidStudioProjects/WebBrowser/app/src/main/res/layout/activity_main.xml" value="0.18432971014492755" />
+        <entry key="..\:/Users/keith/AndroidStudioProjects/WebBrowser/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/keith/AndroidStudioProjects/WebBrowser/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/keith/AndroidStudioProjects/WebBrowser/app/src/main/res/layout/dropdown_item.xml" value="0.1" />
+        <entry key="..\:/Users/keith/AndroidStudioProjects/WebBrowser/app/src/main/res/layout/spinner_item.xml" value="0.1" />
       </map>
     </option>
   </component>

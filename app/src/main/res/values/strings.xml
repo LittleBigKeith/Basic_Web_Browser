@@ -3,4 +3,13 @@
     <string name="toolbar_string">Web Browser</string>
     <string name="URL_text">Type a URL</string>
     <string name="button_string">Go!</string>
+    <string name="course_1">COMP6771</string>
+    <string name="course_2">COMP9044</string>
+    <string name="course_3">COMP9414</string>
+    <string name="webtype">webType</string>
+    <string-array name="web_type">
+        <item>Website / WebCMS3</item>
+        <item>Forum / Ed</item>
+        <item>Moodle</item>
+    </string-array>
 </resources>
