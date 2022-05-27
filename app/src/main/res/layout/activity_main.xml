@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,20 +11,21 @@
     <EditText
         android:id="@+id/URL"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints="URL"
         android:hint="@string/URL_text"
         android:inputType="textUri|text|textEmailAddress|textEmailSubject"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_go"
+        app:layout_constraintStart_toEndOf="@+id/reload"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -36,11 +38,14 @@
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/URL" />
+        app:layout_constraintTop_toBottomOf="@+id/URL" >
+
+    </WebView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -54,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -64,23 +69,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/course_2"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/button1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/course_3"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
@@ -88,13 +93,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:contentDescription="@string/webtype"
+        android:contentDescription="@string/alt_text"
         android:dropDownWidth="wrap_content"
         android:minHeight="54dp"
         android:spinnerMode="dropdown"
         android:dropDownVerticalOffset="59dp"
+        android:backgroundTint="@color/dark_red"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/reload"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/dark_pink"
+        android:contentDescription="@string/reload"
+        app:layout_constraintStart_toEndOf="@+id/forward"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@android:drawable/ic_menu_rotate" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/dark_pink"
+        android:contentDescription="@string/last_page"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@android:drawable/ic_media_previous" />
+
+    <ImageButton
+        android:id="@+id/forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/dark_pink"
+        android:contentDescription="@string/next_page"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@android:drawable/ic_media_next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

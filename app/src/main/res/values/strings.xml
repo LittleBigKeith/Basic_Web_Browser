@@ -3,13 +3,32 @@
     <string name="toolbar_string">Web Browser</string>
     <string name="URL_text">Type a URL</string>
     <string name="button_string">Go!</string>
-    <string name="course_1">COMP6771</string>
-    <string name="course_2">COMP9044</string>
-    <string name="course_3">COMP9414</string>
-    <string name="webtype">webType</string>
+    <string name="last_page">last page</string>
+    <string name="next_page">next page</string>
+    <string name="reload">reload</string>
+    <string name="alt_text">Page type</string>
+    <string name="no_connection">You\'re offline! Please check your internet connection</string>
     <string-array name="web_type">
         <item>Website / WebCMS3</item>
         <item>Forum / Ed</item>
         <item>Moodle</item>
     </string-array>
+
+    <string name="course_1">COMP6771</string>
+    <string name="website_1">https://webcms3.cse.unsw.edu.au/COMP6771/22T2/</string>
+    <string name="forum_1"></string>
+    <string name="moodle_1"></string>
+
+    <string name="course_2">COMP9044</string>
+    <string name="website_2">https://webcms3.cse.unsw.edu.au/COMP2041/22T2/</string>
+    <string name="forum_2">https://edstem.org/au/courses/8680/discussion/</string>
+    <string name="moodle_2"></string>
+
+    <string name="course_3">COMP9414</string>
+    <string name="website_3">https://webcms3.cse.unsw.edu.au/COMP9414/22T2/</string>
+    <string name="forum_3">https://edstem.org/au/courses/8583/discussion/</string>
+    <string name="moodle_3">https://moodle.telt.unsw.edu.au/course/view.php?id=67827</string>
+
+    <string name ="error_404">http://www.free404.com/wander/404.html</string>
+
 </resources>
