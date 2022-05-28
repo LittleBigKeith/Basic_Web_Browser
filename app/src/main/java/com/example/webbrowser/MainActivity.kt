@@ -10,6 +10,7 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -99,17 +100,47 @@ class MainActivity : AppCompatActivity() {
         urlText.setText("")
 
         back.setOnClickListener() {
-            //TODO
+            if (webView.canGoBack())
+                webView.goBack()
         }
 
         forward.setOnClickListener() {
-            //TODO
+            if (webView.canGoForward())
+                webView.goForward()
         }
 
         reload.setOnClickListener() {
             val current = urlText.text.toString()
             webView.loadUrl(current)
         }
+
+        back.alpha = 0.5F
+        forward.alpha = 0.5F
+    }
+
+    private var lastDownTime = 0L
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        val webView = findViewById<WebView>(R.id.webView)
+        val threshold = 2000
+        val currentDownTime = System.currentTimeMillis()
+        if(event?.action == KeyEvent.ACTION_DOWN) {
+            when (keyCode) {
+                KeyEvent.KEYCODE_BACK -> if (webView.canGoBack()) {
+                    webView.goBack()
+                    return true
+                } else {
+                    if (currentDownTime - lastDownTime > threshold) {
+                        val toast =
+                            Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_SHORT)
+                        toast.show()
+                        lastDownTime = currentDownTime
+                        return true
+                    }
+                }
+            }
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
     //method for checking connectivity
@@ -136,6 +167,8 @@ class MainActivity : AppCompatActivity() {
         val webView = findViewById<WebView>(R.id.webView)
         val spinner = findViewById<Spinner>(R.id.spinner)
         val typeList = resources.getStringArray(R.array.web_type)
+        val back = findViewById<ImageButton>(R.id.back)
+        val forward = findViewById<ImageButton>(R.id.forward)
         if (spinner.selectedItem != typeList[1] || webSite == getString(R.string.error_404)) {
             webView.getSettings().setJavaScriptEnabled(true)
             CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true)
@@ -154,8 +187,9 @@ class MainActivity : AppCompatActivity() {
                     isReload: Boolean
                 ) {
                     super.doUpdateVisitedHistory(view, url, isReload)
-
                     urlText.setText(url)
+                    if (webView.canGoBack()) back.alpha = 1.0F else back.alpha = 0.5F
+                    if (webView.canGoForward()) forward.alpha = 1.0F else forward.alpha = 0.5F
                     CookieManager.getInstance().flush()
                 }
             }

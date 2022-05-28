@@ -30,5 +30,6 @@
     <string name="moodle_3">https://moodle.telt.unsw.edu.au/course/view.php?id=67827</string>
 
     <string name ="error_404">http://www.free404.com/wander/404.html</string>
+    <string name="exit">Press back once again to exit!</string>
 
 </resources>
