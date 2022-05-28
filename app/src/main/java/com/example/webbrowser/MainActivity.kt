@@ -1,6 +1,7 @@
 
 package com.example.webbrowser
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -208,7 +209,9 @@ class MainActivity : AppCompatActivity() {
         }
         // Hide soft keyboard
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        if (currentFocus != null) {
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
     }
 
     private fun buttonCoursePage(buttonID: Int, typeList: ArrayAdapter<String>) {
